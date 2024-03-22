@@ -25,11 +25,15 @@ export class AuthService {
     // }
 
     async getUserId(userId, name) {
-        const message = `dat fuck ${userId}!`
-        // const user = await this.supabase
-        //     .from('userConjoin_front')
-        //     .select('id , name')
-        //     .eq('id', userId);
-        return message;
+        const user = await this.supabase
+            .from('user_test')
+            .select('*')
+            .eq('id', userId);
+        return user.data;
+    }
+
+    async getUpload(formData, userId) {
+        const data = { formData, userId }
+        return data;
     }
 }
